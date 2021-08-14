@@ -22,13 +22,6 @@ export const allRoutes = {
     static: false,
     component: React.lazy(() => import("../pages/home/home")),
   },
-  new: {
-    name: "new User",
-    path: "/new",
-    secure: true,
-    static: false,
-    component: React.lazy(() => import("../pages/newUser/newUser")),
-  },
 };
 
 export const isAuthenticated = () => {

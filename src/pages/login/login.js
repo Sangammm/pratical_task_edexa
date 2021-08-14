@@ -11,6 +11,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
     setError,
+    reset,
   } = useForm();
 
   const history = useHistory();
@@ -22,6 +23,7 @@ const Login = () => {
         { type: "manual", message: "Wrong Email" },
         { shouldFocus: true }
       );
+      reset({ ...values, email: "" }, { keepErrors: true });
       return;
     } else if (values.password !== "12345678") {
       setError(
@@ -29,8 +31,10 @@ const Login = () => {
         { type: "manual", message: "Wrong Password" },
         { shouldFocus: true }
       );
+      reset({ ...values, password: "" }, { keepErrors: true });
       return;
     }
+
     localStorage.setItem("email", values.email);
     history.replace(allRoutes.home.path);
   };

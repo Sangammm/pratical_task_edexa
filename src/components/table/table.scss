@@ -1,0 +1,22 @@
+.tableContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  table {
+    thead {
+      tr {
+        th {
+          padding: 5px 15px;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import FormItem from "../formIItem/formItem";
 
-const AddUser = () => {
+const AddUser = ({ onAddUser }) => {
   const {
     register,
     handleSubmit,
@@ -10,7 +10,7 @@ const AddUser = () => {
   } = useForm();
 
   const onSuccess = (data) => {
-    console.log("🚀 ~ data", data);
+    onAddUser({ id: Date.now(), ...data });
   };
 
   return (
@@ -25,7 +25,7 @@ const AddUser = () => {
             placeholder="profile"
             {...register("profile")}
           />
-          {errors.file && <span>{errors.file}</span>}
+          {errors.file && <span>{errors.file.message}</span>}
         </FormItem>
 
         <FormItem>
@@ -33,10 +33,10 @@ const AddUser = () => {
           <input
             placeholder="Name"
             {...register("name", {
-              required: { value: true, message: "name is required" },
+              required: { value: true, message: "Name is required" },
             })}
           />
-          {errors.name && <span>{errors.name}</span>}
+          {errors.name && <span>{errors.name.message}</span>}
         </FormItem>
 
         <FormItem>
