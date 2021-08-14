@@ -1,9 +1,9 @@
 import React from "react";
 import { Redirect } from "react-router";
-import { allRoutes } from "./index";
+import { allRoutes, isAuthenticated } from "./index";
 
 const PublicRoute = ({ component: Component }) => {
-  if ("checkAuth") {
+  if (isAuthenticated()) {
     return <Redirect to={allRoutes.home.path} />;
   }
   return <Component />;

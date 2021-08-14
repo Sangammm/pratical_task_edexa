@@ -30,3 +30,7 @@ export const allRoutes = {
     component: React.lazy(() => import("../pages/newUser/newUser")),
   },
 };
+
+export const isAuthenticated = () => {
+  return localStorage.getItem("email");
+};
