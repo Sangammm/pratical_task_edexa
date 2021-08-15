@@ -35,8 +35,10 @@ const Row = ({ index }) => {
   const source = dataSource[index];
   return (
     <tr>
-      {columns.map(({ keyName, name }) => (
-        <td key={name}>{source[keyName]}</td>
+      {columns.map(({ keyName, name, render }) => (
+        <td key={name}>
+          {render ? render(source[keyName], source) : source[keyName]}
+        </td>
       ))}
     </tr>
   );

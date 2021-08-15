@@ -1,6 +1,12 @@
 import React, { useMemo, useState } from "react";
 import Table from "../table/table";
 
+function diff_years(dt2, dt1) {
+  var diff = (dt2.getTime() - dt1.getTime()) / 1000;
+  diff /= 60 * 60 * 24;
+  return Math.abs(Math.round(diff / 365.25));
+}
+
 const UserList = ({ users = [] }) => {
   const [sort, setSort] = useState({ column: "", isAsc: true });
   const [search, setSearch] = useState("");
@@ -25,7 +31,10 @@ const UserList = ({ users = [] }) => {
       copyUsers = copyUsers.filter((user) => {
         let result = false;
         Object.keys(user).forEach((key) => {
-          const found = user[key].toString().search(search);
+          const found = user[key]
+            .toString()
+            .toLowerCase()
+            .search(search.toLowerCase());
           result = found === 0 || result;
         });
         return result;
@@ -36,16 +45,17 @@ const UserList = ({ users = [] }) => {
 
   const columns = [
     {
-      name: "Id",
-      keyName: "id",
-    },
-    {
       name: "Name",
       keyName: "name",
     },
     {
       name: "Address",
       keyName: "address",
+    },
+    {
+      name: "Age",
+      keyName: "age",
+      render: (value) => diff_years(new Date(), value),
     },
   ];
 

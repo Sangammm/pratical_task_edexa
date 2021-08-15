@@ -1,0 +1,8 @@
+.datePicker {
+  .react-datepicker__input-container {
+    display: flex;
+    > input {
+      flex: 1 0 auto;
+    }
+  }
+}
