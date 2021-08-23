@@ -1,0 +1,25 @@
+.formItem {
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 5px 15px;
+  position: relative;
+  > label {
+    text-align: start;
+    padding: 0;
+    font-size: 14px;
+  }
+  input {
+    padding: 5px 10px;
+  }
+  > span {
+    color: red;
+    position: absolute;
+    text-align: start;
+    bottom: 0;
+    left: 5px;
+    right: 5px;
+    line-height: 15px;
+    font-size: 13px;
+  }
+}
